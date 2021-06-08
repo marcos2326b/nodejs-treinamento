@@ -109,8 +109,9 @@ module.exports = app => {
                     response.status(500).send(`Erro ao conectar no banco MongoDB: ${erro}`);
                 });
             }   
-        }      
+        },
 
     }
+
     return Rastreamentocontroller;
 }
