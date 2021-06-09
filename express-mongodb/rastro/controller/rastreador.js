@@ -11,17 +11,12 @@ module.exports = (app) => {
             console.log(request.body);
 
             const Rastreador = app.model.rastreador;
-
             const rastreador = new Rastreador(request.body);
 
             mongoose.connect(
-                'mongodb://localhost:27017/rastro-dev',
-                {
-                    useNewUrlParser: true,
-                    useUnifiedTopology: true,
-                    useCreateIndex: true
-                }
-            )
+                app.constantes.db.connection,
+                app.constantes.db.connectionParams
+                )
                 .then(
                     (resultado) => {
 
@@ -61,12 +56,9 @@ module.exports = (app) => {
             const Rastreador = app.model.rastreador;
 
             mongoose.connect(
-                'mongodb://localhost:27017/rastro-dev',
-                {
-                    useNewUrlParser: true,
-                    useUnifiedTopology: true,
-                    useCreateIndex: true
-                })
+                app.constantes.db.connection,
+                app.constantes.db.connectionParams
+                )
 
                 .then(() => {
                     Rastreador.updateOne(
@@ -109,15 +101,13 @@ module.exports = (app) => {
             console.log('Rota DELETE /rastreador chamada...');
             console.log('request.params:');
             console.log(request.params);
-
+            
+            
             mongoose.connect(
-                'mongodb://localhost:27017/rastro-dev',
-                {
-                    useNewUrlParser: true,
-                    useUnifiedTopology: true,
-                    useCreateIndex: true
-                }
-            )
+                app.constantes.db.connection,
+                app.constantes.db.connectionParams
+                )
+
                 .then(() => {
                     const Rastreamento = app.model.rastreamento;
                     const Rastreador = app.model.rastreador;

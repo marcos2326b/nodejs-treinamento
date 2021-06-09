@@ -21,12 +21,10 @@ module.exports = app => {
             
 
             mongoose.connect(
-            'mongodb://localhost:27017/rastro-dev',
-            {
-                useNewUrlParser: true,
-                useUnifiedTopology: true,
-                useCreateIndex: true
-            })
+                app.constantes.db.connection,
+                app.constantes.db.connectionParams
+                )
+
              .then (() => {
 
                 Rastreador.find({codigoRastreador: rastreamento.codigoRastreador})
@@ -71,15 +69,13 @@ module.exports = app => {
             if(request.params.codigoRastreador == "" || request.params.codigoRastreador == null ){
                 response.status(400).send('Parametro codigoRastreador invalido');
             } else {
-                
+               
+               
+               
                 mongoose.connect(
-                    'mongodb://localhost:27017/rastro-dev',
-                    {
-                        useNewUrlParser: true,
-                        useUnifiedTopology: true,
-                        useCreateIndex: true
-                    }    
-                )
+                    app.constantes.db.connection,
+                    app.constantes.db.connectionParams
+                    )
 
             
 
